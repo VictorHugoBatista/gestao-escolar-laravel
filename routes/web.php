@@ -14,3 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('adicionar-aluno', function() {
+    return view('aluno.adicionar');
+});
