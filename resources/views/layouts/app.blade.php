@@ -7,7 +7,11 @@
     <body>
         @include('partials.header')
         <div class="container">
-            @yield('content')
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    @yield('content')
+                </div>
+            </div>
         </div>
         <script src="/js/app.js"></script>
     </body>
