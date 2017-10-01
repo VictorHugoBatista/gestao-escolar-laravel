@@ -18,3 +18,5 @@ Route::get('/', function () {
 Route::get('adicionar-aluno', function() {
     return view('aluno.adicionar');
 });
+
+Route::post('insere-aluno', ['uses' => 'AlunoController@insereAluno']);
