@@ -3,6 +3,7 @@
 @section('content')
     <div class="panel panel-default">
         <div class="panel-body">
+            @include('commons.errors')
             <form action="{{ url('insere-aluno') }}" method="post">
                <div class="form-group">
                    <label for="nome" class="control-label">Nome</label>
