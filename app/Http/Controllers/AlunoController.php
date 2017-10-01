@@ -8,6 +8,11 @@ use Validator;
 
 class AlunoController extends Controller
 {
+    /**
+     * Rota de inserção de aluno acessado pelo formulário da rota 'inserir-alunos'.
+     * @param Request $request
+     * @return $this|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function insereAluno(Request $request)
     {
         $validator = $this->validaInsereAluno($request->all());
@@ -36,5 +41,16 @@ class AlunoController extends Controller
            'result' => ! $validator->fails(),
            'validator' => $validator,
        ];
+    }
+
+    /**
+     * Rota de exibição de uma listagem com todos os alunos.
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function listarAlunos()
+    {
+        return view('aluno.listar', [
+            'alunos' => Aluno::orderBy('created_at', 'asc')->get(),
+        ]);
     }
 }
