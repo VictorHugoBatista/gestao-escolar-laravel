@@ -23,7 +23,7 @@ class AlunoController extends Controller
         $aluno->nome = $request->get('nome');
         $aluno->endereco = $request->get('endereco');
         $aluno->save();
-        return redirect('/adicionar-aluno');
+        return redirect('/listar-alunos');
     }
 
     /**
@@ -50,7 +50,7 @@ class AlunoController extends Controller
     public function listarAlunos()
     {
         return view('aluno.listar', [
-            'alunos' => Aluno::orderBy('created_at', 'asc')->get(),
+            'alunos' => Aluno::orderBy('created_at', 'desc')->get(),
         ]);
     }
 }
