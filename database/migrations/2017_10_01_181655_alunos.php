@@ -17,6 +17,7 @@ class Alunos extends Migration
             $table->increments('id');
             $table->string('nome');
             $table->string('endereco');
+            $table->timestamps();
         });
     }
 
