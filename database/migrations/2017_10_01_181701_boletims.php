@@ -19,6 +19,7 @@ class Boletims extends Migration
             $table->string('materia');
             $table->integer('nota');
             $table->integer('faltas');
+            $table->timestamps();
 
             $table
                 ->foreign('id_aluno')
