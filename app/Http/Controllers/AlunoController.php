@@ -22,6 +22,9 @@ class AlunoController extends Controller
         $aluno = new Aluno;
         $aluno->nome = $request->get('nome');
         $aluno->endereco = $request->get('endereco');
+        $aluno->nome_mae = $request->get('nome-mae');
+        $aluno->nome_pai = $request->get('nome-pai');
+        $aluno->telefone = $request->get('telefone');
         $aluno->save();
         return redirect('/listar-alunos');
     }
@@ -36,6 +39,7 @@ class AlunoController extends Controller
        $validator = Validator::make($requestData, [
            'nome' => 'required',
            'endereco' => 'required',
+           'telefone' => 'required',
        ]);
        return [
            'result' => ! $validator->fails(),
