@@ -57,4 +57,9 @@ class AlunoController extends Controller
             'alunos' => Aluno::orderBy('created_at', 'desc')->get(),
         ]);
     }
+
+    public function exibeDadosAluno(Aluno $aluno)
+    {
+        dd($aluno);
+    }
 }

@@ -21,3 +21,5 @@ Route::get('adicionar-aluno', function() {
 Route::post('insere-aluno', ['uses' => 'AlunoController@insereAluno']);
 
 Route::get('listar-alunos', ['uses' => 'AlunoController@listarAlunos']);
+
+Route::get('aluno/{aluno}', ['uses' => 'AlunoController@exibeDadosAluno']);
