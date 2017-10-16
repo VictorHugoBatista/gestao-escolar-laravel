@@ -18,4 +18,24 @@
         <li><strong>Telefone:</strong> {{ $aluno->telefone }}</li>
         @endif
     </ul>
+    @if(0 < $aluno->boletims->count())
+        <table class="table table-striped">
+           <thead>
+               <tr>
+                   <th>Matéria</th>
+                   <th>Nota</th>
+                   <th>Faltas</th>
+               </tr>
+           </thead>
+           <tbody>
+                @foreach($aluno->boletims as $boletim)
+                    <tr>
+                        <td>{{ $boletim->materia }}</td>
+                        <td>{{ $boletim->nota }}</td>
+                        <td>{{ $boletim->faltas }}</td>
+                    </tr>
+                @endforeach
+           </tbody>
+        </table>
+    @endif
 @endsection

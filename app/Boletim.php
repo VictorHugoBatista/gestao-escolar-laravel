@@ -8,6 +8,6 @@ class Boletim extends Model
 {
     public function aluno()
     {
-        return $this->belongsTo('Aluno');
+        return $this->belongsTo('App\Aluno');
     }
 }
