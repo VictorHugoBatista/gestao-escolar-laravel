@@ -8,6 +8,6 @@ class Aluno extends Model
 {
     public function boletims()
     {
-        return $this->hasMany('Boletim');
+        return $this->hasMany('App\Boletim');
     }
 }
