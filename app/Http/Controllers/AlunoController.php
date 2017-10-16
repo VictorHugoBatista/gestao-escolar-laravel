@@ -60,6 +60,8 @@ class AlunoController extends Controller
 
     public function exibeDadosAluno(Aluno $aluno)
     {
-        dd($aluno);
+        return view('aluno.interna', [
+            'aluno' => $aluno,
+        ]);
     }
 }
