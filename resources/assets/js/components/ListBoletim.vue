@@ -13,7 +13,14 @@
            };
         },
         created() {
-            console.log(this.alunoid);
+            axios.get('/boletim', {
+                params: {
+                     'alunoid': this.alunoid,
+                },
+            })
+                .then(response => {
+                    console.log(response);
+                });
         },
     }
 </script>
