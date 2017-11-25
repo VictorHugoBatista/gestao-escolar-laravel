@@ -9,7 +9,9 @@
         <div class="container">
             <div class="panel panel-default">
                 <div class="panel-body">
-                    @yield('content')
+                    <div id="app">
+                        @yield('content')
+                    </div>
                 </div>
             </div>
         </div>
