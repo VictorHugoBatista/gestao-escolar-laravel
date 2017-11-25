@@ -1,13 +1,19 @@
 <template>
     <div>
-        teste
+        {{ alunoid }}
     </div>
 </template>
 
 <script>
     export default {
-        mounted() {
-            console.log('init');
-        }
+        props: ['alunoid'],
+        data() {
+           return {
+               boletins: [],
+           };
+        },
+        created() {
+            console.log(this.alunoid);
+        },
     }
 </script>

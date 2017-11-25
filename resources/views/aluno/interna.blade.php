@@ -18,5 +18,5 @@
         <li><strong>Telefone:</strong> {{ $aluno->telefone }}</li>
         @endif
     </ul>
-    <list-boletim></list-boletim>
+    <list-boletim :alunoid="{{ $aluno->id }}"></list-boletim>
 @endsection
