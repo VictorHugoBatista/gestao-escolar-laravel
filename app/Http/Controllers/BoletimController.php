@@ -15,7 +15,7 @@ class BoletimController extends Controller
     public function index(Request $request)
     {
         return response()->json([
-            'boletim' =>
+            'boletins' =>
                 Boletim::where(['aluno_id' => $request->get('alunoid')])->get(),
         ], 200);
     }
