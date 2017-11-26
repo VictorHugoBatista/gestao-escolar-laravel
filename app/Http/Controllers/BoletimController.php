@@ -38,7 +38,13 @@ class BoletimController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $boletimToSave = new Boletim();
+        $boletimToSave->aluno_id = $request->get('alunoid');
+        $boletimToSave->materia = $request->get('materia');
+        $boletimToSave->nota = $request->get('nota');
+        $boletimToSave->faltas = $request->get('faltas');
+        $boletimToSave->save();
+        return response()->json($boletimToSave);
     }
 
     /**
