@@ -52,6 +52,11 @@
                },
            };
         },
+
+        /**
+         * Inicializa listagem do boletim com todos
+         * os registros relacionados ao aluno.
+         */
         created() {
             axios.get('/boletim', {
                 params: {
@@ -65,11 +70,21 @@
                 });
         },
         methods: {
+            /**
+             * Verifica se o formulário de nova linha
+             * de boletim possui algum dado preenchido.
+             * @returns {boolean}
+             */
             newBoletimHasData() {
                 return '' !== this.newBoletim.materia ||
                         '' !== this.newBoletim.nota ||
                         '' !== this.newBoletim.faltas;
             },
+
+            /**
+             * Cria nova linha do boletim via ajax. Se a requisição
+             * foi um sucesso, limpa o form e adiciona a nova linha à lista.
+             */
             createBoletim() {
                  if ('' !== this.newBoletim.materia &&
                         '' !== this.newBoletim.nota &&
@@ -88,6 +103,11 @@
                          });
                  }
             },
+
+            /**
+             * Limpa o formulário de criação do boletim
+             * reiniciando o objeto newBoletim.
+             */
             clearNewBoletim() {
                 this.newBoletim = {
                      materia: '',
