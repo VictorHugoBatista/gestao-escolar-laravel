@@ -14,6 +14,11 @@
                     <td>{{ boletim.nota }}</td>
                     <td>{{ boletim.faltas }}</td>
                 </tr>
+                <tr class="success" v-show="newBoletimHasData()">
+                    <td>{{ newBoletim.materia }}</td>
+                    <td>{{ newBoletim.nota }}</td>
+                    <td>{{ newBoletim.faltas }}</td>
+                </tr>
             </tbody>
         </table>
         <div class="form-inline">
@@ -65,6 +70,11 @@
                     fieldValue = event.target.value;
                 this.newBoletim[fieldType] = fieldValue;
             },
+            newBoletimHasData() {
+                return '' !== this.newBoletim.materia ||
+                        '' !== this.newBoletim.nota ||
+                        '' !== this.newBoletim.faltas;
+            }
         },
     }
 </script>
