@@ -34,7 +34,7 @@
                 <label for="add-faltas">Faltas</label>
                 <input type="number" id="add-faltas" class="form-control" v-on:keyup="updateNewBoletim">
             </div>
-            <button id="add-button" class="btn btn-default">Adicionar</button>
+            <button id="add-button" class="btn btn-default" v-on:click="createBoletim">Adicionar</button>
         </div>
     </div>
 </template>
@@ -55,7 +55,7 @@
         created() {
             axios.get('/boletim', {
                 params: {
-                     'alunoid': this.alunoid,
+                     alunoid: this.alunoid,
                 },
             })
                 .then(response => {
@@ -74,7 +74,28 @@
                 return '' !== this.newBoletim.materia ||
                         '' !== this.newBoletim.nota ||
                         '' !== this.newBoletim.faltas;
-            }
+            },
+            createBoletim() {
+                 axios.post('/boletim', {
+                     alunoid: this.alunoid,
+                     materia: this.newBoletim.materia,
+                     nota: this.newBoletim.nota,
+                     faltas: this.newBoletim.faltas,
+                })
+                    .then(response => {
+                        if ('undefined' !== typeof response.data) {
+                            this.clearNewBoletim();
+                            this.boletins.push(response.data);
+                        }
+                    });
+            },
+            clearNewBoletim() {
+                this.newBoletim = {
+                     materia: '',
+                     nota: '',
+                     faltas: '',
+                }
+            },
         },
     }
 </script>
