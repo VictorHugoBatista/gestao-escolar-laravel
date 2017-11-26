@@ -24,15 +24,15 @@
         <div class="form-inline">
             <div class="form-group">
                 <label for="add-materia">Matéria</label>
-                <input id="add-materia" class="form-control" v-on:keyup="updateNewBoletim">
+                <input id="add-materia" class="form-control" v-model="newBoletim.materia">
             </div>
             <div class="form-group">
                 <label for="add-nota">Nota</label>
-                <input type="number" id="add-nota" class="form-control" v-on:keyup="updateNewBoletim">
+                <input type="number" id="add-nota" class="form-control" v-model="newBoletim.nota">
             </div>
             <div class="form-group">
                 <label for="add-faltas">Faltas</label>
-                <input type="number" id="add-faltas" class="form-control" v-on:keyup="updateNewBoletim">
+                <input type="number" id="add-faltas" class="form-control" v-model="newBoletim.faltas">
             </div>
             <button id="add-button" class="btn btn-default" v-on:click="createBoletim">Adicionar</button>
         </div>
@@ -65,11 +65,6 @@
                 });
         },
         methods: {
-            updateNewBoletim(event) {
-                const fieldType = event.target.id.replace('add-', ''),
-                    fieldValue = event.target.value;
-                this.newBoletim[fieldType] = fieldValue;
-            },
             newBoletimHasData() {
                 return '' !== this.newBoletim.materia ||
                         '' !== this.newBoletim.nota ||
