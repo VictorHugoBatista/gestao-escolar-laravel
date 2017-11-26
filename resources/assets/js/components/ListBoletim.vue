@@ -76,18 +76,22 @@
                         '' !== this.newBoletim.faltas;
             },
             createBoletim() {
-                 axios.post('/boletim', {
-                     alunoid: this.alunoid,
-                     materia: this.newBoletim.materia,
-                     nota: this.newBoletim.nota,
-                     faltas: this.newBoletim.faltas,
-                })
-                    .then(response => {
-                        if ('undefined' !== typeof response.data) {
-                            this.clearNewBoletim();
-                            this.boletins.push(response.data);
-                        }
-                    });
+                 if ('' !== this.newBoletim.materia &&
+                        '' !== this.newBoletim.nota &&
+                        '' !== this.newBoletim.faltas) {
+                     axios.post('/boletim', {
+                         alunoid: this.alunoid,
+                         materia: this.newBoletim.materia,
+                         nota: this.newBoletim.nota,
+                         faltas: this.newBoletim.faltas,
+                     })
+                         .then(response => {
+                             if ('undefined' !== typeof response.data) {
+                                 this.clearNewBoletim();
+                                 this.boletins.push(response.data);
+                             }
+                         });
+                 }
             },
             clearNewBoletim() {
                 this.newBoletim = {
