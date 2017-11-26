@@ -19,15 +19,15 @@
         <div class="form-inline">
             <div class="form-group">
                 <label for="add-materia">Matéria</label>
-                <input id="add-materia" class="form-control">
+                <input id="add-materia" class="form-control" v-on:keyup="updateNewBoletim">
             </div>
             <div class="form-group">
                 <label for="add-nota">Nota</label>
-                <input id="add-nota" class="form-control">
+                <input type="number" id="add-nota" class="form-control" v-on:keyup="updateNewBoletim">
             </div>
             <div class="form-group">
                 <label for="add-faltas">Faltas</label>
-                <input id="add-faltas" class="form-control">
+                <input type="number" id="add-faltas" class="form-control" v-on:keyup="updateNewBoletim">
             </div>
             <button id="add-button" class="btn btn-default">Adicionar</button>
         </div>
@@ -40,6 +40,11 @@
         data() {
            return {
                boletins: [],
+               newBoletim: {
+                   materia: '',
+                   nota: '',
+                   faltas: '',
+               },
            };
         },
         created() {
@@ -53,6 +58,13 @@
                         this.boletins = response.data.boletins;
                     }
                 });
+        },
+        methods: {
+            updateNewBoletim(event) {
+                const fieldType = event.target.id.replace('add-', ''),
+                    fieldValue = event.target.value;
+                this.newBoletim[fieldType] = fieldValue;
+            },
         },
     }
 </script>
