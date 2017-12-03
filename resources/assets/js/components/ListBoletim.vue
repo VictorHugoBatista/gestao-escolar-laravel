@@ -6,18 +6,25 @@
                     <td>Matéria</td>
                     <td>Nota</td>
                     <td>Faltas</td>
+                    <td> </td>
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="boletim in boletins">
+                <tr v-for="(boletim, index) in boletins">
                     <td>{{ boletim.materia }}</td>
                     <td>{{ boletim.nota }}</td>
                     <td>{{ boletim.faltas }}</td>
+                    <td>
+                        <button v-on:click="removeBoletim(index)">
+                            Remover
+                        </button>
+                    </td>
                 </tr>
                 <tr class="success" v-show="newBoletimHasData()">
                     <td>{{ newBoletim.materia }}</td>
                     <td>{{ newBoletim.nota }}</td>
                     <td>{{ newBoletim.faltas }}</td>
+                    <td> </td>
                 </tr>
             </tbody>
         </table>
@@ -114,6 +121,11 @@
                      nota: '',
                      faltas: '',
                 }
+            },
+
+            removeBoletim(boletimIndex) {
+               console.log(boletimIndex, this.boletins[boletimIndex].id);
+               this.boletins.splice(boletimIndex, 1);
             },
         },
     }
