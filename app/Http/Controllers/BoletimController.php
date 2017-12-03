@@ -89,6 +89,6 @@ class BoletimController extends Controller
      */
     public function destroy(Boletim $boletim)
     {
-        //
+        $boletim->delete();
     }
 }

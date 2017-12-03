@@ -124,8 +124,10 @@
             },
 
             removeBoletim(boletimIndex) {
-               console.log(boletimIndex, this.boletins[boletimIndex].id);
-               this.boletins.splice(boletimIndex, 1);
+               axios.delete('/boletim/' + this.boletins[boletimIndex].id)
+                   .then(() => {
+                       this.boletins.splice(boletimIndex, 1);
+                   });
             },
         },
     }
